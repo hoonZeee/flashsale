@@ -8,15 +8,14 @@ Kafka 적용 전/후의 성능 차이를 체감해보는 것이 목표입니다.
 ##  프로젝트 받기
 
 ```bash
-git clone <레포지토리 주소>
-cd <폴더명>
+git clone  git@github.com:hoonZeee/flashsale.git
 ```
 
 ---
 
 ## 자바 환경 확인
 
-이 프로젝트는 Java 17 이상이 필요합니다.
+이 프로젝트는 Java 17이 필요합니다.
 
 ### 버전 확인
 
@@ -58,7 +57,7 @@ java -jar build/libs/flashsale-0.0.1-SNAPSHOT.jar
 정상적으로 실행되면 콘솔에 다음 메시지가 표시됩니다:
 
 ```
-초기 데이터 세팅 완료 (재고 100개)
+초기 데이터 세팅 완료 (재고 1000개)
 ```
 
 ---
