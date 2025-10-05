@@ -14,6 +14,18 @@ spring:
     console:
       enabled: true
 
+# Kafka 설정 추가
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: flashsale-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
 # 톰캣/커넥션풀 기본치 살짝 상향(실험 편의)
 server:
   tomcat:
