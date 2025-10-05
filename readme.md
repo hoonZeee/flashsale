@@ -126,7 +126,7 @@ ab -n 5000 -c 200 -p order.json -T application/json http://localhost:8080/order-
 ### 고부하 테스트 (10000건 요청, 동시 400명)
 
 ```bash
-ab -n 10000 -c 400 -p order.json -T application/json http://localhost:8080/order-direct
+ab -n 50000 -c 400 -p order.json -T application/json http://localhost:8080/order-direct
 ```
 
 
