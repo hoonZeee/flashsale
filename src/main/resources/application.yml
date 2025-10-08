@@ -28,3 +28,8 @@ spring.datasource.hikari:
 mock:
   payment:
     delay-ms: 200
+
+spring.kafka:
+  bootstrap-servers: localhost:9092
+  consumer:
+    group-id: flashsale-order-group

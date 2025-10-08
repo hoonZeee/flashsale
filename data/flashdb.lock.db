@@ -1,6 +1,6 @@
 #FileLock
-#Sat Oct 04 14:31:49 KST 2025
-server=localhost\:56502
-hostName=localhost
+#Thu Oct 09 00:44:14 KST 2025
+server=127.0.1.1\:38175
+hostName=DESKTOP-DQ0HIM1.localdomain
 method=file
-id=199adb47590e7512ad4f04dbc40aef4924d1b4ef80c
+id=199c47e8b3f12e476378c6e7d0c165add6566e96418
