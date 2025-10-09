@@ -1,0 +1,28 @@
+{
+  "name": "Kafka Flash Sale System",
+  "image": "mcr.microsoft.com/devcontainers/java:17",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-gradle",
+        "ms-vscode.vscode-json"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y apache2-utils kafka zookeeper",
+  "forwardPorts": [8081, 9092],
+  "portsAttributes": {
+    "8081": {
+      "label": "Spring Boot App",
+      "onAutoForward": "notify"
+    },
+    "9092": {
+      "label": "Kafka Broker",
+      "onAutoForward": "silent"
+    }
+  }
+}
