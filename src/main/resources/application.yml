@@ -4,6 +4,8 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+    hikari:
+      maximum-pool-size: 30
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -13,16 +15,25 @@ spring:
   h2:
     console:
       enabled: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: flashsale-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.swe.flashsale.dto"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 # 톰캣/커넥션풀 기본치 살짝 상향(실험 편의)
 server:
+  port: 8081
   tomcat:
     threads:
       max: 400
-
-# Hikari (기본 10 → 30)
-spring.datasource.hikari:
-  maximum-pool-size: 30
 
 # 결제 모의 지연(외부 PG 호출 대체). 필요시 조절
 mock:

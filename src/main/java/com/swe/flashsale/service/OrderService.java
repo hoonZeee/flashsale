@@ -26,13 +26,21 @@ public class OrderService {
      */
     @Transactional
     public Long placeOrderCore(OrderRequest req) {
+        return placeOrderCore(req.getUserId(), req.getProductId(), req.getQuantity());
+    }
+
+    /**
+     * Kafka Consumer에서 호출하는 메서드
+     */
+    @Transactional
+    public Long placeOrderCore(Long userId, Long productId, Integer quantity) {
         // 1) 재고 행 잠금 후 차감
-        Product product = productRepository.findByIdForUpdate(req.getProductId())
+        Product product = productRepository.findByIdForUpdate(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품 없음"));
-        product.reduceStock(req.getQuantity());
+        product.reduceStock(quantity);
 
         // 2) 주문 생성 저장
-        OrderEntity order = OrderEntity.create(req.getUserId(), req.getProductId(), req.getQuantity());
+        OrderEntity order = OrderEntity.create(userId, productId, quantity);
         order = orderRepository.save(order);
 
         // 3) 이벤트(로그) 기록 - 주문 생성
